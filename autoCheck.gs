@@ -27,6 +27,8 @@ function aliyunCheckin() {
                 'payload': JSON.stringify(queryBody)
             });
             const accessToken = JSON.parse(accessRep).access_token;
+            const newRefeshToken = JSON.parse(accessRep).refresh_token;
+            sheet.getRange(index + 1, 1).setValue(newRefeshToken);
             const nickName = JSON.parse(accessRep).nick_name;
             // 签到
             try {
