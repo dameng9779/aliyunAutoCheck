@@ -28,7 +28,9 @@ function aliyunCheckin() {
             });
             const accessToken = JSON.parse(accessRep).access_token;
             const newRefeshToken = JSON.parse(accessRep).refresh_token;
-            sheet.getRange(index + 1, 1).setValue(newRefeshToken);
+            //需转换为数字1，不然index拼接会变成11
+            var _index = parseInt(index) + 1;
+            sheet.getRange(_index, 1).setValue(newRefeshToken);
             const nickName = JSON.parse(accessRep).nick_name;
             // 签到
             try {
